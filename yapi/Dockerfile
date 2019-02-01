@@ -39,7 +39,7 @@ VOLUME ["/home/yapi/log"]
 USER yapi
 
 # 下载源码文件
-RUN wget https://github.com/YMFE/yapi/archive/1.4.4.tar.gz -O yapi.tar.gz && \
+RUN wget https://github.com/YMFE/yapi/archive/v1.4.4.tar.gz -O yapi.tar.gz && \
     tar -xzvf yapi.tar.gz -C yapi --strip-components 1
 
 # npm install dependencies and run build
