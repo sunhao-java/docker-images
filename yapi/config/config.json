@@ -1,0 +1,22 @@
+{
+  "port": "3000",
+  "adminAccount": "sunhao@lodsve.com",
+  "db": {
+    "servername": "yapi-mongo",
+    "port": 27017,
+    "DATABASE": "yapi",
+    "user": "admin",
+    "pass": "admin123",
+    "authSource": "admin"
+  },
+  "mail": {
+    "enable": true,
+    "host": "smtp.qiye.aliyun.com",
+    "port": 25,
+    "from": "sunhao@lodsve.com",
+    "auth": {
+      "user": "sunhao@lodsve.com",
+      "pass": "xxxxxxxxxxx"
+    }
+  }
+}

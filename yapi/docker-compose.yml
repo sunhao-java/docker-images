@@ -1,0 +1,51 @@
+version: "3"
+services:
+  yapi-mongo:
+    image: mongo:latest
+    container_name: yapi-mongo 
+    restart: always
+    network_mode: "bridge"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-data:/data/db
+    command: mongod --auth
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: yapi-mongo-express
+    restart: always
+    network_mode: "bridge"
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: root
+      ME_CONFIG_BASICAUTH_PASSWORD: root123
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: 'true'
+      ME_CONFIG_MONGODB_SERVER: yapi-mongo
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin123
+    external_links:
+      - yapi-mongo:yapi-mongo
+    depends_on:
+      - yapi-mongo
+
+  yapi:
+    image: sunhao/yapi
+    build: .
+    container_name: yapi
+    restart: always
+    network_mode: "bridge"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./config/config.json:/home/yapi/config.json
+    external_links:
+      - yapi-mongo:yapi-mongo
+    depends_on:
+      - yapi-mongo
+    command: /bin/bash -c "[ ! -e /home/yapi/log/init.lock ] && npm run install-server && touch /home/yapi/log/init.lock; npm run start"
