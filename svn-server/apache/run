@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv sh
+
+# From https://github.com/smebberson/docker-alpine/tree/master/alpine-apache
+
+if [ ! -d /run/apache2 ]; then
+mkdir -p /run/apache2
+fi
+
+exec /usr/sbin/apachectl -DFOREGROUND;

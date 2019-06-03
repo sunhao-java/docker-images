@@ -1,0 +1,25 @@
+#!/usr/bin/with-contenv sh
+
+# From https://github.com/smebberson/docker-alpine/tree/master/alpine-apache
+
+if [ ! -d /opt/svn/repos ]; then
+mkdir -p /opt/svn/repos
+fi
+
+if [ ! -d /opt/svn/config ]; then
+mkdir -p /opt/svn/config
+fi
+
+if [ ! -f /opt/svn/config/passwd ]; then
+touch /opt/svn/config/passwd
+chmod -R 666 /opt/svn/config/passwd
+fi
+
+if [ ! -f /opt/svn/config/accessfile ]; then
+touch /opt/svn/config/accessfile
+chmod -R 666 /opt/svn/config/accessfile
+fi
+
+chown -R apache:apache /opt/svn
+
+exec /usr/bin/svnserve -d --foreground -r /opt/svn/repos --listen-port 3960;
