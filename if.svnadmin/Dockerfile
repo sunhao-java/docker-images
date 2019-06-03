@@ -1,6 +1,8 @@
 # Alpine Linux with s6 service management
 FROM smebberson/alpine-base
 
+LABEL maintainer="sunhao.java@gmail.com"
+
 ENV SVNADMIN_URL=https://nchc.dl.sourceforge.net/project/ifsvnadmin/svnadmin-1.6.2.zip
 
 # Install Apache2 and other stuff needed to access svn via WebDav
