@@ -20,13 +20,19 @@ RUN chown -R apache:apache /var/www/localhost/htdocs/svnadmin/
 # Add WebDav configuration
 ADD config/dav_svn.conf /etc/apache2/conf.d/dav_svn.conf
 
+# Add iF.SVNAdmin config file
+ADD conf/config.inc.php /var/www/localhost/htdocs/svnadmin/include/config.inc.php
+
+# .subversion folder
+RUN mkdir /opt/svn-config-dir &&\
+	chown -R apache:apache /opt/svn-config-dir
+
 # Add services configurations
 ADD apache/ /etc/services.d/apache/
 ADD subversion/ /etc/services.d/subversion/
 
-USER apache
 WORKDIR /opt/svn
 VOLUME /opt/svn
 
 # Expose ports for http and custom protocol access
-EXPOSE 80 443 3960
+EXPOSE 80 443
