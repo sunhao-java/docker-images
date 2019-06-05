@@ -5,16 +5,23 @@
 2. 使用
     - docker-compose.yml
 
-          vim docker-compose.yml
           version: '3.1'
           services:
             if.svnadmin:
-              image: com.lodsve/if.svnadmin:${tag}
+              image:  home.lodsve.com:9013/com.lodsve/if.svnadmin
               container_name: if.svnadmin
               restart: always
               network_mode: "bridge"
               ports:
-                - "9018:80"
+                - "9014:80"
               volumes:
                 - ${DOCKER_VOLUME}/if.svnadmin/svn:/opt/svn
-                - ${DOCKER_VOLUME}/if.svnadmin/svnadmin-config:/var/www/localhost/htdocs/svnadmin/data/
+                - ${DOCKER_VOLUME}/if.svnadmin/config/config.ini:/var/www/localhost/htdocs/data/config.ini
+                - ${DOCKER_VOLUME}/if.svnadmin/config/userroleassignments.ini:/var/www/localhost/htdocs/data/userroleassignments.ini
+    - 启动
+
+          docker-compose up -d
+
+3. 访问：
+   1. web: http://ip:port
+   2. svn: http://ip:port/svn/{svn_repo_name}
