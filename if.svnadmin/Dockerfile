@@ -1,5 +1,5 @@
 # Alpine Linux with s6 service management
-FROM smebberson/alpine-base
+FROM smebberson/alpine-base:3.2.0
 
 LABEL maintainer="sunhao.java@gmail.com"
 
