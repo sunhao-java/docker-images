@@ -24,7 +24,8 @@ ADD config/dav_svn.conf /etc/apache2/conf.d/dav_svn.conf
 ADD apache/ /etc/services.d/apache/
 ADD subversion/ /etc/services.d/subversion/
 
-VOLUME  /var/www/localhost/htdocs/svnadmin/data
+WORKDIR /opt/svn
+VOLUME /opt/svn
 
 # Expose ports for http and custom protocol access
 EXPOSE 80 443 3960
