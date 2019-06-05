@@ -24,7 +24,7 @@ ADD config/dav_svn.conf /etc/apache2/conf.d/dav_svn.conf
 ADD config/config.inc.php /var/www/localhost/htdocs/svnadmin/include/config.inc.php
 
 # .subversion folder
-RUN mkdir /opt/svn-config-dir &&\
+RUN mkdir -p /opt/svn-config-dir &&\
 	chown -R apache:apache /opt/svn-config-dir
 
 # Add services configurations
