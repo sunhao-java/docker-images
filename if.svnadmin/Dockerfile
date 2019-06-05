@@ -21,7 +21,7 @@ RUN chown -R apache:apache /var/www/localhost/htdocs/svnadmin/
 ADD config/dav_svn.conf /etc/apache2/conf.d/dav_svn.conf
 
 # Add iF.SVNAdmin config file
-ADD conf/config.inc.php /var/www/localhost/htdocs/svnadmin/include/config.inc.php
+ADD config/config.inc.php /var/www/localhost/htdocs/svnadmin/include/config.inc.php
 
 # .subversion folder
 RUN mkdir /opt/svn-config-dir &&\
