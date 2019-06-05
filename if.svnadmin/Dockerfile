@@ -24,6 +24,7 @@ ADD config/dav_svn.conf /etc/apache2/conf.d/dav_svn.conf
 ADD apache/ /etc/services.d/apache/
 ADD subversion/ /etc/services.d/subversion/
 
+USER apache
 WORKDIR /opt/svn
 VOLUME /opt/svn
 
