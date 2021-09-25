@@ -1,0 +1,13 @@
+version: '2.1'
+services:
+  yapi:
+    image: sunhaojava/yapi
+    container_name: yapi
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./yapi.log:/home/vendors/log
+    env_file:
+      - .env
+  

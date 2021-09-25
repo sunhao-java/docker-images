@@ -1,0 +1,24 @@
+{
+    "port": "3000",
+    "adminAccount": "DIY-AC",
+    "timeout": 120000,
+    "versionNotify": "DIY-NOTIFY-UPGRADE",
+    "closeRegister": "DIY-DISABLE-REGISTER",
+    "db": {
+        "servername": "DIY-DB-HOST",
+        "DATABASE": "DIY-DB-NAME",
+        "port": "DIY-DB-PORT",
+        "user": "DIY-DB-USER",
+        "pass": "DIY-DB-PWD"
+    },
+    "mail": {
+        "enable": "DIY-MAIL-ENABLE",
+        "host": "DIY-MAIL-HOST",
+        "port": "DIY-MAIL-PORT",
+        "from": "DIY-MAIL-FROM",
+        "auth": {
+            "user": "DIY-MAIL-USER",
+            "pass": "DIY-MAIL-PWD"
+        }
+    }
+}
